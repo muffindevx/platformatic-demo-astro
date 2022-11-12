@@ -1,0 +1,39 @@
+---
+export interface QuoteFormData {
+  id?: number;
+  quote?: string;
+  saidBy?: string;
+  movie?: string
+}
+
+export interface Props {
+  action: string;
+  values?: QuoteFormData;
+  saveError?: boolean;
+  loadError?: boolean;
+  submitLabel: string;
+}
+
+import Error from './Error.astro'
+
+const { action, values = {}, saveError, loadError, submitLabel } = Astro.props;
+---
+
+{saveError && <Error error="There was an error saving the quote. Please try again." />}
+{loadError && <Error error= "There was an error loading the quote. Please try again." />}
+
+<form method="post" action={action}>
+  <label for="quote" class="block">
+    <span>Quote</span>
+    <textarea id="quote" name="quote" required="required" >{values.quote}</textarea>
+  </label>
+  <label for="said-by" class="block">
+    <span>Said by</span>
+    <input type="text" id="said-by" name="saidBy" required="required" value={values.saidBy}>
+  </label>
+  <label for="movie" class="block">
+    <span>Movie</span>
+    <input type="text" id="movie" name="movie" required="required" autocomplete="off" value={values.movie} >
+  </label>
+  <input type="submit" value={submitLabel} disabled={loadError && "disabled"} />
+</form>

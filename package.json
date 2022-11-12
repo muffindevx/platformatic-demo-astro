@@ -1,0 +1,19 @@
+{
+  "name": "platformatic-demo-astro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "astro dev --port 3000",
+    "build": "astro build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@urql/core": "^3.0.5",
+    "astro": "^1.6.7",
+    "graphql": "^16.6.0",
+    "open-props": "^1.4.24"
+  }
+}
